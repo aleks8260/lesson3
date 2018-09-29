@@ -1,95 +1,141 @@
-<!--Вывод навигации
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <ul class="nav">
-        <php
-/*        $nav = 4; //кол-во меню
-        $cur_page = 1; //первая страница
-        while ($cur_page <= $nav) {
-            echo "<li class=\"nav-item\">
-              <a class=\"nav-link active\" href=\"?page=$cur_page\">Link</a></li>";
-            $cur_page++;
-        }
+<?php
 
+// Цикл while
 
-        */?>
-    </ul>
-</body>
+$a = 1;
+$b = 2;
+  while ($a < 10) {
+    echo $b ."<br>";
+    $b *= 2;
+    $a++;
+}
+echo "<br>";
 
-</html>
-//пример вывода поинтс с 100 точками через цикл фор
-for($i=0, $k="Points"; $i<100; $i++)
-$k=$k.".";
-echo $k .'<br>';
-//1. Необходимо создать выпадающий список годов от 2000 до 2050.
--->
-<select>
-    <?php
-    for($i=2000; $i<2050; $i++):?>
-    <option>
-        <?=$i;?>
-    </option>
-    <?php endfor;?>
+// Счетчик
+$counter = 0;
+while($counter <= 10 ){
+
+    echo $counter;
+    $counter++;
+
+}
+echo "<br>";
+
+// Досрочный выход
+  $last = 10;
+  while (true) {
+    echo $last;
+    if ($last == 10) {
+      break;
     }
-</select>
-<br>
 
-<?php
-//2.Отрисовать таблицу умножения.
-/*for ($i=0;$i<=10;$i++) {
-    for ($j=0;$j<=10;$j++) {
-        echo $i.'*'.$j.'='.($i*$j).'<br>';
+    $last++;
+  }
+echo "<br>";
+
+// Цикл for
+  for  ($i  =  0, $k  = "Points";  $i  <  100;  $i++)  
+    $k =  $k . ".";
+    echo  $k;
+
+echo "<br>";
+
+// Switch
+$number = 100;
+
+switch($number){
+
+    case 34:
+    echo "it is 34";
+    break;
+    case 37:
+    echo "is it 37";
+    break;
+    case 35:
+    echo "is it 35";
+     break;
+    case 24:
+    echo "is it 24";
+    break;
+    
+    default : 
+     echo "we could not find anything";
+    break;
+}
+
+echo "<br>";
+// Цикл foreach
+$menu = array(
+  'main' => 'main.php',
+  'about' => 'about.php',
+  'info' => 'info.php',
+  'contacts' => 'contacts.php',
+);
+
+echo "<ul>";
+foreach ($menu as $key => $value) {
+  echo "<li><a href=". $value . ">". $key ."</a></li>";
+}
+echo "</ul>";
+
+
+// таблица умножения
+$a = 3;
+$b = 3;
+
+echo "<table border=\"1px\"><tbody >";
+for($i = 1; $a >= $i; $i++) {
+    echo "<tr>";
+    for ($j = 0, $l = 0; $b > $l; $l++, $j+=$i){
+        echo "<td width=\"150px\" align=\"center\" bgcolor=\"pink\">".($i+$j)."</td>";
     }
-}*/
-?>
-<table>
-<?php
-    for($i=1; $i<10; $i++):?>
-    <tr></tr>
-        <?php
-        for($j=1; $j<10; $j++): ?>
-            <td><?=$i*$j;?></td>
-            <?php endfor;?>
-    <?php endfor;?>
-</table>
+    echo "</tr>";
+}
+echo "</tbody></table>";
 
+// Switch
+$numbers = array(1,2,3,4,5);
+$my_act = "+";
+$arr_len = count($numbers);
 
-<?php
-    $posts = [
-            0=>[
-                    'title' => 'list-based media',
-                    'author' => 'Author1',
-                    'description' => 'cras...........'
-            ],
-            1=>[
-                    'title' => 'list-based media2',
-                    'author' => 'Author2',
-                    'description' => 'cras2...........'
-            ],
-            2=>[
-                    'title' => 'list-based media3',
-                    'author' => 'Author3',
-                    'description' => 'cras3...........'
-            ],
-    ];
-    ?>
-    //var_dump($posts);
-    <?php foreach ($posts as $value): ?>
-        <li class="media">
+    $result = $numbers[0];
+    switch($my_act){
+    case "+":
+      for($i = 1; $i < $arr_len; $i++){
+            $result += $numbers[$i];
+            // var_dump($result);
+          }
+          break;
+      case "*":
+        for($i = 1; $i < $arr_len; $i++){
+                $result *= $numbers[$i];
+          }
+          break;
+      case "-":
+        for($i = 1; $i < $arr_len; $i++){
+                $result -= $numbers[$i];
+          }
+          break;
+      case "/":
+        for($i = 1; $i < $arr_len; $i++){
+                $result /= $numbers[$i];
+          }
+          break;
+      case "%":
+          for($i = 1; $i < $arr_len; $i++) {
+                $result %= $numbers[$i];
+            }
+          break;
+      default:
+      echo "Ошибочка вышла!";
+  }
+    echo $result;
 
-            <p><?=$value['author'];?></p>
-                <div class="media-body">
-                    <h5><?=$value['title'];?></h5>
-                    <!--<p><?/*=date(format 'Y-m-d'):*/?></p>-->
-                    <p><?=$value['description'];?></p>
-                </div>
-        </li>
-<?php endforeach;?>
+echo "<br>";
+
+// Список годов
+echo "<select>";
+  for ($i = 2000; $i <= 2050; $i++) { 
+    echo "<option>" .$i. "</option>";
+  }
+echo "</select>";
